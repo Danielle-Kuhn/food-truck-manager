@@ -1,0 +1,26 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.food_truck.controller.DashboardController"
+            style="-fx-background-color: #f4f6f8;">
+    <top><VBox spacing="8" style="-fx-background-color: #263238;"><padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+        <Label text="Dashboard de vendas" style="-fx-text-fill: white; -fx-font-size: 23px; -fx-font-weight: bold;"/>
+        <HBox spacing="10"><Button text="Voltar ao menu" onAction="#voltarAoMenu"/><Button text="Relatórios" onAction="#abrirRelatorios"/><Button text="Atualizar" onAction="#atualizar"/></HBox>
+    </VBox></top>
+    <center><VBox spacing="14"><padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+        <GridPane hgap="12" vgap="12">
+            <VBox GridPane.columnIndex="0" style="-fx-background-color: white; -fx-padding: 16; -fx-background-radius: 8;" spacing="6"><Label text="Pedidos"/><Label fx:id="lblPedidos" text="0" style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/></VBox>
+            <VBox GridPane.columnIndex="1" style="-fx-background-color: white; -fx-padding: 16; -fx-background-radius: 8;" spacing="6"><Label text="Faturamento"/><Label fx:id="lblFaturamento" text="R$ 0,00" style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: #2e7d32;"/></VBox>
+            <VBox GridPane.columnIndex="2" style="-fx-background-color: white; -fx-padding: 16; -fx-background-radius: 8;" spacing="6"><Label text="Clientes atendidos"/><Label fx:id="lblClientes" text="0" style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: #6a1b9a;"/></VBox>
+            <VBox GridPane.columnIndex="3" style="-fx-background-color: white; -fx-padding: 16; -fx-background-radius: 8;" spacing="6"><Label text="Produtos com estoque baixo"/><Label fx:id="lblEstoqueBaixo" text="0" style="-fx-font-size: 25px; -fx-font-weight: bold; -fx-text-fill: #c62828;"/></VBox>
+        </GridPane>
+        <Label text="Faturamento por dia" style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+        <BarChart fx:id="graficoVendas" VBox.vgrow="ALWAYS" animated="false">
+            <xAxis><CategoryAxis label="Dia"/></xAxis>
+            <yAxis><NumberAxis label="Valor (R$)" forceZeroInRange="true"/></yAxis>
+        </BarChart>
+    </VBox></center>
+</BorderPane>

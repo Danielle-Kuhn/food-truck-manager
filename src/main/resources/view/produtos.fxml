@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.food_truck.controller.ProdutoController"
+            style="-fx-background-color: #f4f6f8;">
+
+    <top>
+        <VBox spacing="8"
+              style="-fx-background-color: #263238;">
+            <padding>
+                <Insets top="18" right="22" bottom="18" left="22"/>
+            </padding>
+
+            <Label text="Gerenciamento de Produtos"
+                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <Label text="Cadastre e organize os produtos do Food Truck."
+                   style="-fx-text-fill: #cfd8dc;"/>
+            
+            <Button text="Voltar ao menu"
+                    onAction="#voltarAoMenu"
+                    maxWidth="150"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="20" right="22" bottom="20" left="22"/>
+            </padding>
+
+            <VBox spacing="8"
+                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 18;">
+
+                <Label text="Dados do produto"
+                       style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+
+                <Label text="Nome"/>
+                <TextField fx:id="txtNome"
+                           promptText="Nome do produto"/>
+
+                <Label text="Descrição"/>
+                <TextField fx:id="txtDescricao"
+                           promptText="Descrição do produto"/>
+
+                <Label text="Preço"/>
+                <TextField fx:id="txtPreco"
+                           promptText="Ex.: 12.50"/>
+
+                <Label text="Quantidade em estoque"/>
+                <TextField fx:id="txtEstoque" promptText="Ex.: 50"/>
+
+                <Label text="Categoria"/>
+                <ComboBox fx:id="comboCategoria"
+                          promptText="Selecione uma categoria"
+                          maxWidth="Infinity"/>
+
+                <CheckBox fx:id="checkDisponivel"
+                          text="Produto disponível"
+                          selected="true"/>
+
+                <HBox spacing="10">
+                    <Button fx:id="btnSalvar"
+                            text="Cadastrar"
+                            onAction="#salvar"
+                            style="-fx-background-color: #2e7d32; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+                    <Button text="Limpar"
+                            onAction="#limpar"/>
+
+                    <Button text="Excluir selecionado"
+                            onAction="#excluir"
+                            style="-fx-background-color: #c62828; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+
+            <Label text="Produtos cadastrados"
+                   style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+
+            <TextField fx:id="txtPesquisa"
+                       promptText="Pesquisar produto pelo nome..."/>
+
+            <TableView fx:id="tabelaProdutos"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+                    <TableColumn fx:id="colunaId"
+                                 text="Código"
+                                 prefWidth="65"/>
+
+                    <TableColumn fx:id="colunaNome"
+                                 text="Produto"
+                                 prefWidth="150"/>
+
+                    <TableColumn fx:id="colunaDescricao"
+                                 text="Descrição"
+                                 prefWidth="180"/>
+
+                    <TableColumn fx:id="colunaPreco"
+                                 text="Preço"
+                                 prefWidth="90"/>
+
+                    <TableColumn fx:id="colunaCategoria"
+                                 text="Categoria"
+                                 prefWidth="130"/>
+
+                    <TableColumn fx:id="colunaEstoque" text="Estoque" prefWidth="80"/>
+
+                    <TableColumn fx:id="colunaDisponivel"
+                                 text="Disponível"
+                                 prefWidth="90"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

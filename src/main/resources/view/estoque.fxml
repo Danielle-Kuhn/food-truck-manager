@@ -1,0 +1,20 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.food_truck.controller.EstoqueController" style="-fx-background-color: #f4f6f8;">
+    <top><VBox spacing="8" style="-fx-background-color: #263238;"><padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+        <Label text="Controle de estoque" style="-fx-text-fill: white; -fx-font-size: 23px; -fx-font-weight: bold;"/>
+        <Button text="Voltar ao menu" onAction="#voltarAoMenu" maxWidth="150"/>
+    </VBox></top>
+    <center><VBox spacing="12"><padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+        <CheckBox fx:id="chkBaixo" text="Mostrar somente produtos com estoque baixo (5 ou menos)" onAction="#filtrarBaixo"/>
+        <TableView fx:id="tabela" VBox.vgrow="ALWAYS"><columns>
+            <TableColumn fx:id="colProduto" text="Produto" prefWidth="240"/><TableColumn fx:id="colCategoria" text="Categoria" prefWidth="180"/>
+            <TableColumn fx:id="colQuantidade" text="Quantidade" prefWidth="130"/><TableColumn fx:id="colSituacao" text="Situação" prefWidth="150"/>
+        </columns></TableView>
+        <HBox spacing="10" alignment="CENTER_LEFT"><Label text="Nova quantidade:"/><TextField fx:id="txtQuantidade" promptText="Quantidade" prefWidth="130"/><Button text="Atualizar estoque" onAction="#salvar" style="-fx-background-color: #2e7d32; -fx-text-fill: white;"/></HBox>
+        <Label text="O estoque é baixado automaticamente quando um pedido é salvo." style="-fx-text-fill: #607d8b;"/>
+    </VBox></center>
+</BorderPane>

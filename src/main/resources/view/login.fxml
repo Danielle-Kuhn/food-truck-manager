@@ -1,0 +1,21 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.food_truck.controller.LoginController"
+            style="-fx-background-color: #f4f6f8;">
+    <center>
+        <VBox alignment="CENTER" spacing="14" maxWidth="340"
+              style="-fx-background-color: white; -fx-background-radius: 12;">
+            <padding><Insets top="32" right="34" bottom="32" left="34"/></padding>
+            <Label text="FOOD TRUCK MANAGER" style="-fx-font-size: 23px; -fx-font-weight: bold; -fx-text-fill: #263238;"/>
+            <Label text="Acesse sua conta" style="-fx-text-fill: #607d8b;"/>
+            <TextField fx:id="txtUsuario" promptText="Usuário" maxWidth="Infinity"/>
+            <PasswordField fx:id="txtSenha" promptText="Senha" maxWidth="Infinity" onAction="#entrar"/>
+            <Button text="Entrar" onAction="#entrar" maxWidth="Infinity"
+                    style="-fx-background-color: #2e7d32; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;"/>
+            <Label text="Primeiro acesso: admin / admin123" style="-fx-font-size: 11px; -fx-text-fill: #78909c;"/>
+        </VBox>
+    </center>
+</BorderPane>

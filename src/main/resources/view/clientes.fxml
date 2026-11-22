@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.food_truck.controller.ClienteController"
+            style="-fx-background-color: #f4f6f8;">
+
+    <top>
+        <VBox spacing="8"
+              style="-fx-background-color: #263238;">
+            <padding>
+                <Insets top="18" right="22" bottom="18" left="22"/>
+            </padding>
+
+            <Label text="Gerenciamento de Clientes"
+                   style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <Label text="Cadastre e organize os clientes do Food Truck."
+                   style="-fx-text-fill: #cfd8dc;"/>
+
+            <Button text="Voltar ao menu"
+                    onAction="#voltarAoMenu"
+                    maxWidth="150"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="20" right="22" bottom="20" left="22"/>
+            </padding>
+
+            <VBox spacing="8"
+                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 18;">
+
+                <Label text="Dados do cliente"
+                       style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+
+                <Label text="Nome"/>
+                <TextField fx:id="txtNome"
+                           promptText="Nome completo"/>
+
+                <Label text="Telefone"/>
+                <TextField fx:id="txtTelefone"
+                           promptText="Telefone de contato"/>
+
+                <Label text="E-mail"/>
+                <TextField fx:id="txtEmail"
+                           promptText="E-mail do cliente"/>
+
+                <HBox spacing="10">
+                    <Button fx:id="btnSalvar"
+                            text="Cadastrar"
+                            onAction="#salvar"
+                            style="-fx-background-color: #2e7d32; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+                    <Button text="Limpar"
+                            onAction="#limpar"/>
+
+                    <Button text="Excluir selecionado"
+                            onAction="#excluir"
+                            style="-fx-background-color: #c62828; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+
+            <Label text="Clientes cadastrados"
+                   style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+
+            <TextField fx:id="txtPesquisa"
+                       promptText="Pesquisar cliente pelo nome..."/>
+
+            <TableView fx:id="tabelaClientes"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+                    <TableColumn fx:id="colunaId"
+                                 text="Código"
+                                 prefWidth="80"/>
+
+                    <TableColumn fx:id="colunaNome"
+                                 text="Nome"
+                                 prefWidth="220"/>
+
+                    <TableColumn fx:id="colunaTelefone"
+                                 text="Telefone"
+                                 prefWidth="160"/>
+
+                    <TableColumn fx:id="colunaEmail"
+                                 text="E-mail"
+                                 prefWidth="300"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

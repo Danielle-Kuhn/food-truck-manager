@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.food_truck.controller.PedidoController"
+            style="-fx-background-color: #f4f6f8;">
+
+    <top>
+        <VBox spacing="8"
+              style="-fx-background-color: #263238;">
+            <padding>
+                <Insets top="18" right="20" bottom="18" left="20"/>
+            </padding>
+
+            <Label text="Gerenciamento de Pedidos"
+                   style="-fx-text-fill: white; -fx-font-size: 23px; -fx-font-weight: bold;"/>
+
+            <Label text="Registre pedidos, adicione produtos e acompanhe os status."
+                   style="-fx-text-fill: #cfd8dc;"/>
+
+            <Button text="Voltar ao menu"
+                    onAction="#voltarAoMenu"
+                    maxWidth="150"
+                    style="-fx-background-color: #546e7a; -fx-text-fill: white;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="18" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <VBox spacing="10"
+                  style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15;">
+
+                <Label text="Novo pedido"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                <Label text="Cliente"/>
+                <ComboBox fx:id="comboCliente"
+                          promptText="Selecione o cliente"
+                          maxWidth="Infinity"/>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Produto"/>
+                        <ComboBox fx:id="comboProduto"
+                                  promptText="Selecione o produto"
+                                  maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text="Quantidade"/>
+                        <TextField fx:id="txtQuantidade"
+                                   promptText="Qtd."
+                                   prefWidth="90"/>
+                    </VBox>
+
+                    <VBox spacing="5">
+                        <Label text=" "/>
+                        <Button text="Adicionar"
+                                onAction="#adicionarItem"
+                                style="-fx-background-color: #1565c0; -fx-text-fill: white;"/>
+                    </VBox>
+                </HBox>
+
+                <Label text="Itens do pedido"
+                       style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+
+                <TableView fx:id="tabelaItens" prefHeight="150">
+                    <columns>
+                        <TableColumn fx:id="colunaItemProduto"
+                                     text="Produto"
+                                     prefWidth="230"/>
+                        <TableColumn fx:id="colunaItemQuantidade"
+                                     text="Quantidade"
+                                     prefWidth="100"/>
+                        <TableColumn fx:id="colunaItemPreco"
+                                     text="Preço unitário"
+                                     prefWidth="130"/>
+                        <TableColumn fx:id="colunaItemSubtotal"
+                                     text="Subtotal"
+                                     prefWidth="130"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Remover item"
+                            onAction="#removerItem"
+                            style="-fx-background-color: #c62828; -fx-text-fill: white;"/>
+
+                    <Button text="Limpar pedido"
+                            onAction="#limparPedido"/>
+                    
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <Label text="TOTAL:"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                    <Label fx:id="lblTotal"
+                           text="R$ 0,00"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2e7d32;"/>
+                </HBox>
+
+                <Button text="Salvar pedido"
+                        onAction="#salvarPedido"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #2e7d32; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+            </VBox>
+
+            <Label text="Pedidos cadastrados"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+            <TableView fx:id="tabelaPedidos" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colunaPedidoId"
+                                 text="Código"
+                                 prefWidth="65"/>
+                    <TableColumn fx:id="colunaPedidoCliente"
+                                 text="Cliente"
+                                 prefWidth="170"/>
+                    <TableColumn fx:id="colunaPedidoData"
+                                 text="Data"
+                                 prefWidth="150"/>
+                    <TableColumn fx:id="colunaPedidoTotal"
+                                 text="Total"
+                                 prefWidth="120"/>
+                    <TableColumn fx:id="colunaPedidoStatus"
+                                 text="Status"
+                                 prefWidth="130"/>
+                </columns>
+            </TableView>
+
+            <Label text="Detalhes do pedido selecionado"
+                   style="-fx-font-size: 17px; -fx-font-weight: bold;"/>
+
+            <TableView fx:id="tabelaDetalhes" prefHeight="130">
+                <columns>
+                    <TableColumn fx:id="colunaDetalheProduto"
+                                 text="Produto"
+                                 prefWidth="230"/>
+                    <TableColumn fx:id="colunaDetalheQuantidade"
+                                 text="Quantidade"
+                                 prefWidth="110"/>
+                    <TableColumn fx:id="colunaDetalhePreco"
+                                 text="Preço unitário"
+                                 prefWidth="140"/>
+                    <TableColumn fx:id="colunaDetalheSubtotal"
+                                 text="Subtotal"
+                                 prefWidth="140"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Alterar status:"/>
+                <ComboBox fx:id="comboStatus"
+                          promptText="Selecione o status"
+                          prefWidth="190"/>
+
+                <Button text="Atualizar status"
+                        onAction="#atualizarStatus"
+                        style="-fx-background-color: #1565c0; -fx-text-fill: white;"/>
+            </HBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

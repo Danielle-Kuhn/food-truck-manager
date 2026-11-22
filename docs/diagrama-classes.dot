@@ -1,0 +1,17 @@
+digraph FoodTruckManager {
+  graph [rankdir=LR, bgcolor="white", pad="0.25", nodesep="0.55", ranksep="0.8", fontname="Arial", labelloc="t", label="Food Truck Manager — Diagrama de Classes", fontsize=20];
+  node [shape=record, style="rounded,filled", fillcolor="#F4F6F8", color="#455A64", fontname="Arial", fontsize=10, margin="0.12,0.08"];
+  edge [color="#455A64", fontname="Arial", fontsize=9, arrowsize=0.8];
+  Categoria [label="{Categoria|id: Long\lnome: String\ldescricao: String\l}"];
+  Produto [label="{Produto|id: Long\lnome: String\ldescricao: String\lpreco: BigDecimal\ldisponivel: boolean\lestoque: Integer\l}"];
+  Cliente [label="{Cliente|id: Long\lnome: String\ltelefone: String\lemail: String\l}"];
+  Pedido [label="{Pedido|id: Long\ldataHora: LocalDateTime\lstatus: StatusPedido\lvalorTotal: BigDecimal\l}"];
+  ItemPedido [label="{ItemPedido|id: Long\lquantidade: Integer\lprecoUnitario: BigDecimal\l}"];
+  Usuario [label="{Usuario|id: Long\lnomeUsuario: String\lhashSenha: String\lsaltSenha: String\lativo: boolean\lperfil: String\l}"];
+  StatusPedido [shape=note, fillcolor="#FFF8E1", label="StatusPedido\nABERTO\nEM_PREPARACAO\nPRONTO\nFINALIZADO\nCANCELADO"];
+  Categoria -> Produto [label="1       0..*", arrowhead="crow", arrowtail="none"];
+  Cliente -> Pedido [label="1       0..*", arrowhead="crow", arrowtail="none"];
+  Pedido -> ItemPedido [label="1       1..*", arrowhead="crow", arrowtail="none"];
+  Produto -> ItemPedido [label="1       0..*", arrowhead="crow", arrowtail="none"];
+  Pedido -> StatusPedido [style=dashed, label="usa"];
+}
